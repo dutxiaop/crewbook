@@ -1,0 +1,7 @@
+# Preserve the original bytes used for the dashboard's configuration hashes.
+agents/*.toml -text diff whitespace=cr-at-eol
+agents/*.methods.json -text diff whitespace=cr-at-eol
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.py text eol=lf
+*.md text eol=lf

@@ -1,0 +1,6 @@
+__pycache__/
+.data/
+*.sqlite*
+auth.json
+.env
+.env.*
