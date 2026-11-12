@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>研发员工看板</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>研发员工</span></div>
+    <nav class="view-nav" aria-label="看板导航">
+      <a href="#task-board" data-page="tasks" aria-current="page">任务</a>
+      <a href="#learning-records" data-page="learning">学习记录</a>
+    </nav>
+    <div class="header-actions">
+      <span id="connection" class="connection" role="status"><span class="signal"></span><span id="connection-label">连接中</span></span>
+      <button id="refresh" class="refresh" type="button" aria-label="刷新员工数据" title="刷新员工数据">↻</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar" aria-label="员工列表">
+      <div class="sidebar-heading"><h2>员工</h2><span id="staff-count" class="count">—</span></div>
+      <button id="all-staff" class="staff-all" type="button" aria-pressed="true"><span class="team-icon" aria-hidden="true">▦</span>全体员工</button>
+      <div id="staff-list" class="staff-list"></div>
+      <div id="scope-actions" class="scope-actions"></div>
+    </aside>
+    <main>
+        <section id="task-view" class="panel" aria-labelledby="tasks-heading">
+          <div class="panel-heading"><h2 id="tasks-heading">任务</h2><span id="task-count" class="count">—</span></div>
+          <div class="toolbar task-toolbar">
+            <div class="segments" aria-label="任务状态">
+              <button type="button" data-task-view="active" aria-pressed="true">进行中</button>
+              <button type="button" data-task-view="recent" aria-pressed="false">最近完成</button>
+            </div>
+            <div class="task-options">
+              <label class="select"><span class="sr-only">任务聚合方式</span><select id="task-grouping">
+                <option value="employee">按员工聚合</option><option value="project">按项目聚合</option>
+              </select></label>
+              <label class="check"><input id="replays" type="checkbox">含回放</label>
+            </div>
+          </div>
+          <div id="tasks" class="task-list"><p class="empty">正在读取任务…</p></div>
+        </section>
+        <section id="learning-view" class="panel" aria-labelledby="learning-heading" hidden>
+          <div class="panel-heading"><h2 id="learning-heading">学习记录</h2><span id="learning-count" class="count">—</span></div>
+          <div class="toolbar learning-toolbar">
+            <label class="select"><span class="sr-only">学习来源</span><select id="learning-source">
+              <option value="all">全部来源</option><option value="user">用户反馈</option><option value="autonomous">自主提议</option><option value="file">配置变更</option><option value="history">历史归档</option>
+            </select></label>
+            <label class="select"><span class="sr-only">学习阶段</span><select id="learning-stage">
+              <option value="all">全部阶段</option><option value="proposed">待确认</option><option value="accepted">已接受</option><option value="applied">已写入</option><option value="verified">已复验</option><option value="rejected">已搁置</option>
+            </select></label>
+          </div>
+          <div id="learning" class="learning-list"><p class="empty">正在读取记录…</p></div>
+        </section>
+    </main>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

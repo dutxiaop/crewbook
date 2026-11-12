@@ -8,6 +8,14 @@ Crewbook 是一套 Codex 自定义岗位配置，覆盖产品定义、交互设�
 
 同名 `*.methods.json` 记录岗位的工作方法，便于查看和维护。
 
+## Web 看板
+
+将需要展示的岗位 TOML 和同名 `*.methods.json` 一起放到 `~/.codex/agents/`。看板从本机 Codex 读取已安装的岗位和任务。
+
+在仓库根目录运行 `python -B -X utf8 dashboard/server.py`，然后打开 [员工看板](http://127.0.0.1:8767/)。Windows 也可以双击 `dashboard/启动看板.cmd`。
+
+看板只监听本机。学习回执和岗位变更记录保存在 `dashboard/.data/learning.sqlite`。
+
 ## 校验
 
 在仓库根目录用 Python 3.11 或更新版本运行 `python -X utf8 check.py`，校验 TOML 和方法 JSON 的配对与版本。
